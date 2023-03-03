@@ -1,34 +1,38 @@
+//library
 import React, { useState } from "react";
+import ProfileDropdown from "./components/ProfileDropdown";
+import { NavLink, Link } from "react-router-dom";
+//mui
 import { makeStyles } from "@mui/styles";
-import { Theme } from "@mui/material";
+// import { Theme } from "@mui/material";
 import {
   Drawer,
   useMediaQuery,
   List,
-  ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
   Box,
   Toolbar,
   AppBar,
   IconButton,
-  InputBase,
-  InputAdornment,
-  Button,
-  Stack,
-  Container,
-  Link,
+  Typography,
+  // InputBase,
+  // InputAdornment,
+  // Button,
+  // Stack,
+  // Container,
+  // Link,
 } from "@mui/material";
-
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import DesktopWindowsOutlinedIcon from "@mui/icons-material/DesktopWindowsOutlined";
 import WifiTetheringOutlinedIcon from "@mui/icons-material/WifiTetheringOutlined";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 // import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ProfileDropdown from "./components/ProfileDropdown";
+
 import logo from "./images/cruda.png";
 const drawerWidth = 240;
 
@@ -59,6 +63,30 @@ const Layout = () => {
   const classes = useStyles();
   const matches = useMediaQuery("(min-width: 600px)");
   const [open, setOpen] = useState(false);
+
+  const navLinks = [
+    {
+      title: "Website",
+      icon: <DesktopWindowsOutlinedIcon />,
+      path: "/",
+    },
+    {
+      title: "products",
+      icon: <StorefrontOutlinedIcon />,
+      path: "/products",
+    },
+    { title: "Sales", icon: <LocalOfferOutlinedIcon />, path: "/sales" },
+    {
+      title: "Marketing",
+      icon: <WifiTetheringOutlinedIcon />,
+      path: "/marketing",
+    },
+    {
+      title: "People",
+      icon: <AccountCircleOutlinedIcon />,
+      path: "/people",
+    },
+  ];
   return (
     <div>
       <Drawer
@@ -84,38 +112,61 @@ const Layout = () => {
           {/* <Box sx={{ px: 2, pt: 2 }}>
           </Box> */}
           <List component="nav">
-            <Box sx={{ position: "relative" }}>
-              <ListItem button>
+            {navLinks.map(({ title, path, icon }) => (
+              <ListItemButton
+                key={title}
+                disableRipple
+                component={NavLink}
+                to={path}
+                style={({ isActive }) => ({
+                  // color: isActive ? '#ffb82a' : '#2f4858'
+                  backgroundColor: isActive && "#f1ed97",
+                })}
+              >
+                <ListItemIcon
+                // style={{
+                //   color: "inherit ",
+                // }}
+                >
+                  {icon}
+                </ListItemIcon>
+                <ListItemText primary={<Typography>{title}</Typography>} />
+              </ListItemButton>
+            ))}
+            {/* <Box sx={{ position: "relative" }}>
+              <ListItemButton>
                 <ListItemIcon>
                   <DesktopWindowsOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText primary="Website" />
-              </ListItem>
+              </ListItemButton>
             </Box>
-            <ListItem button>
+            <ListItemButton>
               <ListItemIcon>
                 <StorefrontOutlinedIcon />
               </ListItemIcon>
               <ListItemText primary="Products" />
-            </ListItem>
-            <ListItem button>
+            </ListItemButton>
+            <ListItemButton>
               <ListItemIcon>
                 <LocalOfferOutlinedIcon />
               </ListItemIcon>
               <ListItemText primary="Sales" />
-            </ListItem>
-            <ListItem button>
+            </ListItemButton>
+            <ListItemButton>
               <ListItemIcon>
                 <WifiTetheringOutlinedIcon />
               </ListItemIcon>
               <ListItemText primary="Marketing" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <AccountCircleOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="People" />
-            </ListItem>
+            </ListItemButton>
+            <NavLink>
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountCircleOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary="People" />
+              </ListItemButton>
+            </NavLink> */}
           </List>
         </Box>
       </Drawer>
