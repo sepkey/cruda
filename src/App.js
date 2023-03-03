@@ -43,6 +43,7 @@ const App = () => {
     ADDUSERS: 2,
   };
   const [clickedItem, setClickedItem] = useState(MENU_ITEMS.HOME);
+  const apiUrl = process.env.REACT_APP_API_URL;
   const handleClick = (item) => setClickedItem(item);
   return (
     <div>
@@ -56,8 +57,8 @@ const App = () => {
         }
       >
         {clickedItem === MENU_ITEMS.HOME && <Home />}
-        {clickedItem === MENU_ITEMS.USERS && <Users />}
-        {clickedItem === MENU_ITEMS.ADDUSERS && <AddUsers />}
+        {clickedItem === MENU_ITEMS.USERS && <Users apiUrl={apiUrl} />}
+        {clickedItem === MENU_ITEMS.ADDUSERS && <AddUsers apiUrl={apiUrl} />}
       </Layout>
     </div>
   );
