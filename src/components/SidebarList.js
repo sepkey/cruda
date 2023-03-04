@@ -74,27 +74,27 @@ import {
   Typography,
 } from "@mui/material";
 //icons
-import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
-import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
-import DesktopWindowsOutlinedIcon from "@mui/icons-material/DesktopWindowsOutlined";
+import PersonAddAlt1OutlinedIcon from "@mui/icons-material/PersonAddAlt1Outlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 
 const SidebarList = ({ items, handleClick, clickedItem }) => {
   const navLinks = [
     {
       title: "home",
-      icon: <DesktopWindowsOutlinedIcon />,
+      icon: <HomeOutlinedIcon />,
       path: "/",
       name: "HOME",
     },
     {
       title: "Users",
-      icon: <StorefrontOutlinedIcon />,
+      icon: <PeopleAltOutlinedIcon />,
       path: "/users",
       name: "USERS",
     },
     {
       title: "Add user",
-      icon: <LocalOfferOutlinedIcon />,
+      icon: <PersonAddAlt1OutlinedIcon />,
       path: "/add",
       name: "ADDUSERS",
     },
